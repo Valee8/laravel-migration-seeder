@@ -15,10 +15,15 @@ return new class extends Migration
     {
         Schema::create('travel', function (Blueprint $table) {
             $table -> id();
-            $table -> integer('price');
-            $table -> integer('time');
-            $table -> integer('carriage');
-            $table -> integer('number_of_stops');
+            $table -> string('agency', 64);
+            $table -> string('phone', 20);
+            $table -> string('departure', 32);
+            $table -> string('destination', 32);
+            $table -> datetime('start_date');
+            $table -> datetime('end_date');
+            $table -> integer('price') -> unsigned() -> nullable(true);
+            $table -> text('description') -> nullable(true);
+            $table -> boolean('refundable') -> default(false);
             $table -> timestamps();
         });
     }
